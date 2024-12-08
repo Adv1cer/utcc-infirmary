@@ -2,7 +2,6 @@
 import Form from "@/components/Landingpage/Form/Form";
 import Navbar from "@/components/Navbar/Navbar";
 import Image from 'next/image';
-import { Button } from "@mantine/core";
 export default function Home() {
   return (
     <div className="relative h-screen w-screen">

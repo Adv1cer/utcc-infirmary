@@ -1,14 +1,11 @@
 "use client";
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import Image from 'next/image';
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { Button, TextInput, MultiSelect } from '@mantine/core';
-import toast, { Toaster } from 'react-hot-toast';
 import handlepatientFormSubmit from "@/components/Landingpage/Form/services/handleSubmit";
 import handleCheckStudent from "@/components/Landingpage/Form/services/handleCheckStudent";
 import options from "@/components/Landingpage/Form/services/symptomOption";
-import { Dorsa, Open_Sans } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 
 const english = Open_Sans({
   subsets: ["latin"],
@@ -61,6 +58,10 @@ export default function Form() {
   useEffect(() => {
     console.log(handleCheckStudentClick);
   }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <section className={english.className}>

@@ -1,6 +1,6 @@
 import { IBM_Plex_Sans_Thai } from "next/font/google";
 import "./globals.css";
-import { createTheme, MantineProvider } from '@mantine/core';
+import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 
 const inter = IBM_Plex_Sans_Thai({
