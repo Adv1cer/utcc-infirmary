@@ -75,7 +75,7 @@ export default function Form() {
           />
           <h1 className="text-4xl md:text-6xl text-center md:text-left flex hover:scale-110 transition-transform duration-300">UTCC Infirmary</h1>
         </div>
-        <div className="bg-blue-100 text-black shadow-md py-8 max-w-lg w-full rounded-full mt-8">
+        <div className="bg-white text-black shadow-lg py-8 max-w-lg w-full rounded-full mt-8">
           <h1 className="text-center text-2xl font-bold mb-6 text-gray-700 ">
             แบบฟอร์มบันทึกอาการ
           </h1>
