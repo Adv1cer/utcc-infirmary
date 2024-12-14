@@ -6,6 +6,9 @@ import handlepatientFormSubmit from "@/components/Landingpage/Form/services/hand
 import handleCheckStudent from "@/components/Landingpage/Form/services/handleCheckStudent";
 import options from "@/components/Landingpage/Form/services/symptomOption";
 import { Open_Sans } from "next/font/google";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import Loading from "@/components/Loading";
 
 const english = Open_Sans({
   subsets: ["latin"],
@@ -20,6 +23,18 @@ export default function Form() {
   const [otherSymptom, setOtherSymptom] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([]);
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === "loading") {
+      return; 
+    }
+
+    if (session) {
+      router.push("/homepage");
+    }
+  }, [session, status, router]);
 
   const handleSymptomChange = (newSymptoms: string[]) => {
     const validSymptoms = newSymptoms.filter(
@@ -55,12 +70,8 @@ export default function Form() {
     });
   };
 
-  useEffect(() => {
-    console.log(handleCheckStudentClick);
-  }, []);
-
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return (
@@ -75,7 +86,7 @@ export default function Form() {
             className="hover:scale-110 transition-transform duration-300"
           />
         </div>
-        <h1 className="grid col-span-4 place-items-center text-4xl md:text-6xl text-center hover:scale-110 transition-transform duration-300">
+        <h1 className="grid text-white col-span-4 place-items-center text-4xl md:text-6xl text-center hover:scale-110 transition-transform duration-300">
           UTCC Infirmary
         </h1>
         <div className="bg-white grid grid-cols-1 col-span-5 row-span-4 rounded-lg max-w-lg mx-auto p-14">
